@@ -1,0 +1,29 @@
+{% for result in results %}
+{% if is_multiple %}
+<li class="autocomplete-item" _="
+            on click set tagHTML to `
+                    <span class='autocomplete-tag' id='{{form_field_name}}_input_{{result.pk}}'>
+                      <button class='remove-tag' _='on click halt the event wait 100ms then remove #{{form_field_name}}_input_{{result.pk}}'>
+                        {{ result.name }}
+                      </button>
+                      <input type='hidden' name='{{ form_field_name }}' value='{{ result.id }}' id='input_{{ result.id }}'>
+                    </span>`
+                  append tagHTML to #selected_{{ form_field_name }}
+              set #id_{{ form_field_name }}_autocomplete.value to ''
+              set #{{ results_id }}.innerHTML to ''
+          ">
+  {{ result }}
+</li>
+{% else %}
+<li class="autocomplete-item" _="
+            on click
+              set #id_{{ form_field_name }}.value to '{{ result.id }}'
+              set #id_{{ form_field_name }}_autocomplete.value to '{{ result|escapejs }}'
+              set #{{ results_id }}.innerHTML to ''
+          ">
+  {{ result }}
+</li>
+{% endif %}
+{% empty %}
+<li class="autocomplete-item"><em>No results found.</em></li>
+{% endfor %}

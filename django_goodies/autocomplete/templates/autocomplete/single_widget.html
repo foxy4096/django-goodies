@@ -1,0 +1,25 @@
+<noscript>
+    <style>
+        .js-autocomplete {
+            display: none;
+        }
+    </style>
+    <select name="{{ widget.name }}" class="input select" id="id_{{ widget.name }}">
+        <option value="">-- Select --</option>
+        {% for obj in widget.fallback_queryset %}
+        <option value="{{ obj.pk }}" {% if widget.selected|stringformat:'s' == obj.pk|stringformat:'s' %}selected{% endif %}>
+            {{ obj }}
+        </option>
+        {% endfor %}
+    </select>
+</noscript>
+
+<div class="js-autocomplete">
+
+    <input type="{{ widget.type }}" name="{{ widget.name }}_autocomplete"
+    class="autocomplete-input"
+        value="{{ widget.selected_object|stringformat:'s' }}" {% include "django/forms/widgets/attrs.html" %}>
+
+    <input type="hidden" name="{{ widget.name }}" value="{{ widget.selected|stringformat:'s' }}"
+        id="id_{{ widget.name }}">
+</div>

@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test Form</title>
+    {{ form.media }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Test Form</h1>
+            <p class="subtitle">This is a test form to demonstrate the autocomplete widget.</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="button is-white">Submit</button>
+            </form>
+            <hr>
+            <h2 class="title">Custom User Creation Form</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ urform.as_p }}
+                <button type="submit" class="button is-white">Create User</button>
+            </form>
+            <hr>
+            <h2 class="title">Custom User Change Form</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ ucform.as_p }}
+                <button type="submit" class="button is-white">Save User</button>
+            </form>
+            <hr>
+            <h2 class="title">User Search Form</h2>
+            <form method="get">
+                {% csrf_token %}
+                <div class="field">
+                    {{ usform.as_p }}
+                </div>
+                <div class="field">
+                    <button type="submit" class="button is-white">Search Users</button>
+                </div>
+                <hr>
+                <h2 class="title">Devloper Search Form</h2>
+                <form method="get">
+                    {% csrf_token %}
+                    <div class="field">
+                        {{ dsform.as_p }}
+                    </div>
+                    <div class="field">
+                        <button type="submit" class="button is-white">Search Devlopers</button>
+                    </div>
+        </div>
+    </section>
+</body>
+
+</html>

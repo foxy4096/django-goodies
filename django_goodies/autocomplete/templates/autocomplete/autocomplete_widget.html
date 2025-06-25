@@ -1,0 +1,9 @@
+<div class="autocomplete-wrapper">
+    {% if widget.is_multiple %}
+    {% include 'autocomplete/multiple_widget.html' %}
+    {% else %}
+    {% include 'autocomplete/single_widget.html' %}
+    {% endif %}
+    <div id="{{ widget.results_id }}" class="autocomplete-results"></div>
+
+</div>
