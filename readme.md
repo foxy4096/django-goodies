@@ -1,3 +1,6 @@
+Currently Developement Halted
+---
+
 
 # 🧰 django-goodies
 
